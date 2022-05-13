@@ -26,10 +26,10 @@ export default function Home() {
 
 					// Render the correct square
 					if (square === "start")
-						return <StartPos {...props} />;
+						return <StartPos {...props} key={props.key} />;
 
 					if (square === "road")
-						return <SquareRoad {...props} />;
+						return <SquareRoad {...props} key={props.key} />;
 
 					// Weird bug here
 					if (square === "x") {
@@ -37,12 +37,12 @@ export default function Home() {
 						if (map[rowIndex - 1] && map[rowIndex - 1][squareIndex] && map[rowIndex - 1][squareIndex] !== "empty")
 							props.style.borderTop = "none !important";
 
-						return <SquareX {...props} />;
+						return <SquareX {...props} key={props.key} />;
 					}
 
 					props.style.border = "none";
 					props.style.margin = "0px";
-					return <SquareEmpty {...props} />;
+					return <SquareEmpty {...props} key={props.key} />;
 				})}
 			</div>;
 		})}
