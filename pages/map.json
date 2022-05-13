@@ -1,0 +1,12 @@
+[
+    ["empty","empty", "start"],
+    ["empty","empty", "road"],
+    ["empty","empty", "road"],
+    ["empty","empty", "x"],
+    ["empty","empty", "road"],
+    ["empty","empty", "road"],
+    ["empty","empty", "road"],
+    ["empty","empty", "x"],
+    ["road", "x", "road", "road", "x", "road", "road"],
+    ["empty","empty", "road"]
+]
