@@ -17,6 +17,7 @@ export default function Home() {
 				{row.map((square, squareIndex) => {
 					const style = {
 						border: "1px solid black",
+						marginLeft: "-1px",
 					}
 
 					const props = {
@@ -28,8 +29,12 @@ export default function Home() {
 					if (square === "start")
 						return <StartPos {...props} key={props.key} />;
 
-					if (square === "road")
+					if (square === "road") {
+						if (map[rowIndex][squareIndex + 1] && map[rowIndex][squareIndex + 1] !== "empty")
+							props.style.borderRight = "none !important";
+
 						return <SquareRoad {...props} key={props.key} />;
+					}
 
 					// Weird bug here
 					if (square === "x") {
@@ -41,7 +46,7 @@ export default function Home() {
 					}
 
 					props.style.border = "none";
-					props.style.margin = "0px";
+					props.style.marginLeft = "0px";
 					return <SquareEmpty {...props} key={props.key} />;
 				})}
 			</div>;
