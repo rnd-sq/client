@@ -42,8 +42,8 @@ export default function Home() {
 						if (map[rowIndex - 1] && map[rowIndex - 1][squareIndex] && map[rowIndex - 1][squareIndex] !== "empty")
 							props.style.borderTop = "none !important";
 
-						if (map[rowIndex - 1] && map[rowIndex - 1][squareIndex] && map[rowIndex - 1][squareIndex] !== "empty")
-							props.style.borderRight = "none !important";
+						if (map[rowIndex][squareIndex - 1] && map[rowIndex][squareIndex - 1] !== "empty")
+							props.style.borderLeft = "none !important";
 
 						return <SquareX {...props} key={props.key} />;
 					}
