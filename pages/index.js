@@ -1,7 +1,7 @@
 // @ts-check
-import defaultMap from "./map.js";
+import defaultMap from "../utils/map";
 import React from "react";
-import Game from "../components/Game.js";
+import Game from "../components/Game";
 
 export default function Home() {
 	const [map, setMap] = React.useState(defaultMap);
