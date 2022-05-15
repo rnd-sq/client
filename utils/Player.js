@@ -2,6 +2,7 @@
 export default class Player {
     /**
      * @type {number}
+     * @private
      */
     moves;
 
@@ -58,6 +59,14 @@ export default class Player {
      */
     setMovesLeft(moves) {
         this.moves = Math.abs(moves);
+    }
+
+    /**
+     * Get the moves left that the player has
+     * @readonly
+     */
+    get movesLeft() {
+        return this.moves;
     }
 
     /**

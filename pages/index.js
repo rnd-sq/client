@@ -5,6 +5,8 @@ import Game from "../components/Game";
 import Player from "../utils/Player";
 import findStart from "../utils/findStart";
 import useForceUpdate from "../utils/useForceUpdate";
+import Menu from "../components/Menu";
+import { NotificationContainer } from "react-notifications";
 
 export default function Home() {
 	const [map] = React.useState(defaultMap);
@@ -16,7 +18,7 @@ export default function Home() {
 	 * @type {(this: Window, ev: KeyboardEvent) => any} 
 	 */
 	const move = e => {
-		if (e.key === "ArrowUp") 
+		if (e.key === "ArrowUp")
 			console.log(player.go("up"));
 
 		if (e.key === "ArrowDown")
@@ -37,7 +39,11 @@ export default function Home() {
 	});
 
 	// Render the game and the control bar
-	return <Game map={player.field} pos={player.position} />
+	return <>
+		<Game map={player.field} pos={player.position} />
+		<Menu player={player} />
+		<NotificationContainer />
+	</>;
 }
 
 /**

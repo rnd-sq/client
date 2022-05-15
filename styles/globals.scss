@@ -18,11 +18,12 @@ body {
 		width: 100vw;
 		height: 100vh;
 		display: flex;
-		justify-content: center;
+		justify-content: right;
 		overflow: scroll;
 
 		// The map
 		#game-wrapper {
+			width: fit-content;
 			padding: 180px;
 
 			.row {
@@ -47,6 +48,15 @@ body {
 					max-height: 52px;
 				}
 			}
+		}
+
+		// The menu
+		#menu {
+			height: 100vh;
+			position: fixed;
+			left: 0px;
+			padding: 20px;
+			background-color: #999;
 		}
 	}
 }
