@@ -1,3 +1,5 @@
-export default function SquareRoad({ style }) {
-    return <div className="sq-road" style={style}></div>;
+export default function SquareRoad({ style, havePlayer }) {
+    return <div className="sq-road" style={style}>
+        {havePlayer && <div id="player"></div>}
+    </div>;
 }

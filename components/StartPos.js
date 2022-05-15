@@ -1,3 +1,5 @@
-export default function StartPos({ style }) {
-    return <div className="sq-start" style={style}>S</div>;
+export default function StartPos({ style, havePlayer }) {
+    return <div className="sq-start" style={style}>
+        {havePlayer ? <div id="player"></div> : "S"}
+    </div>;
 }

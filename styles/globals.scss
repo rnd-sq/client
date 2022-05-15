@@ -24,9 +24,19 @@ body {
 		// The map
 		#game-wrapper {
 			padding: 180px;
+
 			.row {
 				font-family: "Square Font";
 				display: flex;
+
+				> * {
+					user-select: none;
+				}
+			}
+
+			#player {
+				@include absSize(30px);
+				background-color: red;
 			}
 		}
 	}

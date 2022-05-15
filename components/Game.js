@@ -3,9 +3,11 @@ import SquareRoad from "./SquareRoad";
 import SquareX from "./SquareX";
 import StartPos from "./StartPos";
 import isEmpty from "../utils/isEmpty";
-import Player from "../utils/Player";
 
-export default function Game({ map }) {
+/**
+ * @param {{ map: Field, position: Position }} param0 
+ */
+export default function Game({ map, position: playerPos }) {
     return <div id="game-wrapper">
 		{map.map((row, rowIndex) => {
 			return <div className="row" key={Math.random()}>
@@ -27,6 +29,7 @@ export default function Game({ map }) {
 					const props = {
 						key: Math.random(),
 						style,
+						havePlayer: playerPos.row === rowIndex && playerPos.col === squareIndex,
 					}
 
 					// Fix alighment of squares

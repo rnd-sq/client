@@ -55,6 +55,13 @@ export default class Player {
     }
 
     /**
+     * @readonly
+     */
+    get field() {
+        return this.map;
+    }
+
+    /**
      * Go to the next position
      * @param {Direction} direction
      */
