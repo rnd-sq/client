@@ -1,10 +1,10 @@
-import SquareEmpty from "../components/SquareEmpty";
-import SquareRoad from "../components/SquareRoad";
-import SquareX from "../components/SquareX";
-import StartPos from "../components/StartPos";
+import SquareEmpty from "./SquareEmpty";
+import SquareRoad from "./SquareRoad";
+import SquareX from "./SquareX";
+import StartPos from "./StartPos";
 import isEmpty from "../utils/isEmpty";
+import Player from "../utils/Player";
 
-// @ts-check
 export default function Game({ map }) {
     return <div id="game-wrapper">
 		{map.map((row, rowIndex) => {
@@ -14,6 +14,13 @@ export default function Game({ map }) {
 						border: "1px solid black",
 						width: 50,
 						height: 50,
+						borderLeft: "1px solid black",
+						borderTop: "1px solid black",
+						borderRight: "1px solid black",
+						borderBottom: "1px solid black",
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
 					}
 
 					// Props

@@ -19,25 +19,14 @@ body {
 		height: 100vh;
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		overflow: scroll;
 
-		.row {
-			font-family: "Square Font";
-			display: flex;
-	
-			.sq {
-				&-road,
-				&-x,
-				&-start {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					@include absSize(50px);
-				}
-
-				&-empty {
-					@include absSize(52px);
-				}
+		// The map
+		#game-wrapper {
+			padding: 180px;
+			.row {
+				font-family: "Square Font";
+				display: flex;
 			}
 		}
 	}

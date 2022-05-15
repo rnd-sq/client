@@ -1,4 +1,3 @@
-// @ts-check
 import defaultMap from "../utils/map";
 import React from "react";
 import Game from "../components/Game";
