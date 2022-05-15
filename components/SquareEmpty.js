@@ -1,5 +1,3 @@
-export default function SquareEmpty({ style, havePlayer }) {
-    return <div className="sq-empty" style={style}>
-        {havePlayer && <div id="player"></div>}
-    </div>;
+export default function SquareEmpty() {
+    return <div className="sq-empty"></div>;
 }

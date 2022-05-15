@@ -36,12 +36,13 @@ export default class Player {
      * @param {Field} map 
      * @param {Position} startPos 
      * @param {Direction} direction 
+     * @param {number} movesLeft
      */
-    constructor(map, startPos, direction = "down") {
+    constructor(map, startPos, direction = "down", movesLeft = 0) {
         this.map = map;
         this.startPos = this.playerPos = startPos;
         this.currentDirection = direction;
-        this.moves = 0;
+        this.moves = movesLeft;
     }
 
     /**
@@ -79,7 +80,7 @@ export default class Player {
      * @param {Direction} direction
      */
     go(direction) {
-        if (!this.move(direction) || this.moves === 0)
+        if (this.moves === 0 || !this.move(direction))
             return false;
 
         // If touch X, game over
