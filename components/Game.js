@@ -1,13 +1,44 @@
+// @ts-check
 import SquareEmpty from "./SquareEmpty";
 import SquareRoad from "./SquareRoad";
 import SquareX from "./SquareX";
 import StartPos from "./StartPos";
 import isEmpty from "../utils/isEmpty";
+import React, { useEffect } from "react";
 
 /**
- * @param {{ map: Field, position: Position }} param0 
+ * @param {{ player: import("../utils/Player").default }} param0 
  */
-export default function Game({ map, position: playerPos }) {
+export default function Game({ player }) {
+	const map = player.field;
+	const [playerPos, setPos] = React.useState(player.position);
+
+	/**
+	 * @type {(this: Window, ev: KeyboardEvent) => any} 
+	 */
+	// TODO: The player does not move yet. But the functionality is correct.
+	const move = e => {
+		if (e.key === "ArrowUp") 
+			console.log(player.go("up"));
+
+		if (e.key === "ArrowDown")
+			console.log(player.go("down"));
+
+		if (e.key === "ArrowLeft")
+			console.log(player.go("left"));
+
+		if (e.key === "ArrowRight")
+			console.log(player.go("right"));
+
+		setPos(player.position);
+	}
+
+	useEffect(() => {
+		window.addEventListener("keydown", move);
+		return () => window.removeEventListener("keydown", move);
+	});
+
+	// Render the game wrapper
     return <div id="game-wrapper">
 		{map.map((row, rowIndex) => {
 			return <div className="row" key={Math.random()}>

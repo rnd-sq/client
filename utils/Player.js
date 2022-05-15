@@ -1,6 +1,11 @@
 // @ts-check
 export default class Player {
     /**
+     * @type {number}
+     */
+    moves;
+
+    /**
      * @readonly
      * @type {Field}
      * @private
@@ -36,6 +41,7 @@ export default class Player {
         this.map = map;
         this.startPos = this.playerPos = startPos;
         this.currentDirection = direction;
+        this.moves = 0;
     }
 
     /**
@@ -44,6 +50,13 @@ export default class Player {
     restart() {
         this.playerPos = this.startPos;
         return true;
+    }
+
+    /**
+     * @param {number} moves
+     */
+    setMovesLeft(moves) {
+        this.moves = Math.abs(moves);
     }
 
     /**
@@ -66,12 +79,14 @@ export default class Player {
      * @param {Direction} direction
      */
     go(direction) {
-        if (!this.move(direction))
+        if (!this.move(direction) || this.moves === 0)
             return false;
 
         // If touch X, game over
-        if (this.map[this.playerPos.row][this.playerPos.col] === "x")
+        if (this.map[this.playerPos.row][this.playerPos.col] === "x" && this.moves === 0)
             return this.restart();
+
+        this.moves--;
 
         // Successfully move
         return true;

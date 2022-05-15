@@ -12,7 +12,7 @@ export default function Home() {
 	const player = React.useMemo(() => new Player(map, findStart(map)), [map]);
 
 	// Render the game and the control bar
-	return <Game map={player.field} position={player.position} />
+	return <Game player={player} />
 }
 
 /**
