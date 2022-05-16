@@ -19,6 +19,7 @@ export default function Home() {
 	 * @type {(this: Window, ev: KeyboardEvent) => any} 
 	 */
 	const move = e => {
+		// Key events
 		if (e.key === "ArrowUp")
 			player.go("up");
 
@@ -31,11 +32,13 @@ export default function Home() {
 		if (e.key === "ArrowRight")
 			player.go("right");
 
+		// If the player lost, show a notification and restart the game
 		if (player.hasLost()) {
 			NotificationManager.error("You touched X. Now you need to go again from the beginning!");
 			player.restart();
 		}
 
+		// Update the UI
 		rerender();
 	}
 
