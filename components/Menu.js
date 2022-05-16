@@ -8,9 +8,6 @@ import RollTheDice from "./RollTheDice";
  */
 export default function Menu({ player }) {
     return <div id="menu">
-        {/* Moves left does not display */}
-        {/* Add styles for notifications */}
-        <div id="player-data">{"Moves left: " + player.movesLeft}</div>
         <RollTheDice player={player} />
     </div>
 }

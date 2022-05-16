@@ -1,5 +1,5 @@
 import { NotificationManager } from "react-notifications";
-import random from "../utils/random"
+import random from "../utils/random";
 import useForceUpdate from "../utils/useForceUpdate";
 
 /**
@@ -14,13 +14,16 @@ export default function RollTheDice({ player }) {
     const onClick = () => {
         if (player.movesLeft === 0) {
             player.setMovesLeft(random(1, 6));
+            NotificationManager.info("You rolled " + player.movesLeft);
             rerender();
+            return;
         }
 
         NotificationManager.warning(`You have ${player.movesLeft} moves left! Finish all the moves then roll again!`);
     }
 
     return <div id="roll-the-dice">
+        <div id="player-data">{"Moves left: " + player.movesLeft}</div>
         <button onClick={onClick}>Roll the dice</button>
     </div>
 }

@@ -1,3 +1,5 @@
+import findStart from "./findStart";
+
 // @ts-check
 export default class Player {
     /**
@@ -14,13 +16,6 @@ export default class Player {
     map;
 
     /**
-     * @readonly
-     * @type {Position}
-     * @private
-     */
-    startPos;
-
-    /**
      * @type {Position}
      * @private
      */
@@ -33,25 +28,49 @@ export default class Player {
     currentDirection;
 
     /**
+     * Check whether the player touched the X
+     * @type {boolean}
+     * @private
+     */
+    lose;
+
+    /**
      * Create a player
      * @param {Field} map 
      * @param {Position} startPos 
      * @param {Direction} direction 
      * @param {number} movesLeft
      */
-    constructor(map, startPos, direction = "down", movesLeft = 0) {
+    constructor(map, direction = "down", movesLeft = 0) {
         this.map = map;
-        this.startPos = this.playerPos = startPos;
+        this.playerPos = findStart(map);
         this.currentDirection = direction;
         this.moves = movesLeft;
+        this.lose = false;
     }
 
     /**
-     * Move the player to the start position
+     * Set the position of the player
+     * @param {Position} pos
+     */
+    setPosition(pos) {
+        this.playerPos = pos;
+    }
+
+    /**
+     * Restart the game
      */
     restart() {
-        this.playerPos = this.startPos;
-        return true;
+        this.lose = false;
+        this.setPosition(findStart(this.map));
+        this.setMovesLeft(0);
+    }
+
+    /**
+     * Check whether the player has touched X
+     */
+    hasLost() {
+        return this.lose;
     }
 
     /**
@@ -92,11 +111,11 @@ export default class Player {
         if (this.moves === 0 || !this.move(direction))
             return false;
 
-        // If touch X, game over
-        if (this.map[this.playerPos.row][this.playerPos.col] === "x" && this.moves === 0)
-            return this.restart();
-
         this.moves--;
+
+        // If touch X, game over
+        if (this.map[this.playerPos.row][this.playerPos.col] === "x" && this.moves === 0) 
+            return (this.lose = true);
 
         // Successfully move
         return true;

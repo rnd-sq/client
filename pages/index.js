@@ -3,15 +3,16 @@ import defaultMap from "../utils/map";
 import React from "react";
 import Game from "../components/Game";
 import Player from "../utils/Player";
-import findStart from "../utils/findStart";
 import useForceUpdate from "../utils/useForceUpdate";
 import Menu from "../components/Menu";
-import { NotificationContainer } from "react-notifications";
+import { NotificationContainer, NotificationManager } from "react-notifications";
+import 'react-notifications/lib/notifications.css';
+import findStart from "../utils/findStart";
 
 export default function Home() {
 	const [map] = React.useState(defaultMap);
 	// @ts-ignore
-	const player = React.useMemo(() => new Player(map, findStart(map)), [map]);
+	const player = React.useMemo(() => new Player(map), [map]);
 	const rerender = useForceUpdate();
 
 	/**
@@ -19,16 +20,21 @@ export default function Home() {
 	 */
 	const move = e => {
 		if (e.key === "ArrowUp")
-			console.log(player.go("up"));
+			player.go("up");
 
 		if (e.key === "ArrowDown")
-			console.log(player.go("down"));
+			player.go("down");
 
 		if (e.key === "ArrowLeft")
-			console.log(player.go("left"));
+			player.go("left");
 
 		if (e.key === "ArrowRight")
-			console.log(player.go("right"));
+			player.go("right");
+
+		if (player.hasLost()) {
+			NotificationManager.error("You touched X. Now you need to go again from the beginning!");
+			player.restart();
+		}
 
 		rerender();
 	}
