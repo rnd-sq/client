@@ -1,5 +1,5 @@
 @font-face {
-	font-family: "Square Font";
+	font-family: "Default";
 	src: url("./Montserrat-VariableFont_wght.ttf");
 }
 
@@ -27,7 +27,7 @@ body {
 			padding: 180px;
 
 			.row {
-				font-family: "Square Font";
+				font-family: "Default";
 				display: flex;
 
 				> * {
@@ -57,6 +57,11 @@ body {
 			left: 0px;
 			padding: 20px;
 			background-color: #999;
+		}
+
+		// Notification font
+		.notification {
+			font-family: "Default";
 		}
 	}
 }
