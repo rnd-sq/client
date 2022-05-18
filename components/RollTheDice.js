@@ -1,13 +1,11 @@
 import { NotificationManager } from "react-notifications";
+
 import random from "../utils/random";
-import useForceUpdate from "../utils/useForceUpdate";
 
 /**
- * @param {{ player: import("../utils/Player").default; }} param0 
+ * @param {{ player: import("../utils/Player").default; rerender: () => void }} param0 
  */
-export default function RollTheDice({ player }) {
-    const rerender = useForceUpdate();
-
+export default function RollTheDice({ player, rerender }) {
     /**
      * @type {React.MouseEventHandler<HTMLButtonElement>}
      */
@@ -22,8 +20,5 @@ export default function RollTheDice({ player }) {
         NotificationManager.warning(`You have ${player.movesLeft} moves left! Finish all the moves then roll again!`);
     }
 
-    return <div id="roll-the-dice">
-        <div id="player-data">{"Moves left: " + player.movesLeft}</div>
-        <button onClick={onClick}>Roll the dice</button>
-    </div>
+    return <button id="roll-the-dice" onClick={onClick}>Roll the dice</button>;
 }

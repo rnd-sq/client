@@ -1,13 +1,19 @@
 // @ts-check
 import defaultMap from "../utils/map";
+
 import React from "react";
+
+// Components
 import Game from "../components/Game";
 import Player from "../utils/Player";
-import useForceUpdate from "../utils/useForceUpdate";
 import Menu from "../components/Menu";
 import { NotificationContainer, NotificationManager } from "react-notifications";
+
+// Hooks
+import useForceUpdate from "../utils/useForceUpdate";
+
+// Stylesheets
 import 'react-notifications/lib/notifications.css';
-import findStart from "../utils/findStart";
 
 export default function Home() {
 	const [map] = React.useState(defaultMap);

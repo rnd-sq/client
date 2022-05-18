@@ -42,10 +42,7 @@ body {
 
 			.sq {
 				&-empty {
-					width: 52px;
-					height: 52px;
-					max-width: 52px;
-					max-height: 52px;
+					@include absSize(52px);
 				}
 			}
 		}
@@ -55,8 +52,33 @@ body {
 			height: 100vh;
 			position: fixed;
 			left: 0px;
-			padding: 20px;
 			background-color: #999;
+			display: flex;
+			flex-direction: column;
+
+			> * {
+				margin: 20px;
+			}
+
+			// Some player data
+			#player-data {
+				color: whitesmoke;
+				font-family: "Default";
+			}
+
+			// Roll the dice button
+			#roll-the-dice {
+				&:hover {
+					background-color: white;
+				}
+
+				background-color: whitesmoke;
+				border: none;
+				outline: none;
+				font-family: "Default";
+				padding: 10px;
+				cursor: pointer;
+			}
 		}
 
 		// Notification font
