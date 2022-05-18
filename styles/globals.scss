@@ -1,5 +1,5 @@
 @font-face {
-	font-family: "Default";
+	font-family: "Montserrat";
 	src: url("./Montserrat-VariableFont_wght.ttf");
 }
 
@@ -27,7 +27,7 @@ body {
 			padding: 180px;
 
 			.row {
-				font-family: "Default";
+				font-family: "Montserrat";
 				display: flex;
 
 				> * {
@@ -63,7 +63,7 @@ body {
 			// Some player data
 			#player-data {
 				color: whitesmoke;
-				font-family: "Default";
+				font-family: "Montserrat";
 			}
 
 			// Roll the dice button
@@ -75,7 +75,7 @@ body {
 				background-color: whitesmoke;
 				border: none;
 				outline: none;
-				font-family: "Default";
+				font-family: "Montserrat";
 				padding: 10px;
 				cursor: pointer;
 			}
@@ -83,7 +83,7 @@ body {
 
 		// Notification font
 		.notification {
-			font-family: "Default";
+			font-family: "Montserrat";
 		}
 	}
 }
