@@ -5,6 +5,7 @@ import SquareX from "./SquareX";
 import StartPos from "./StartPos";
 import isEmpty from "../utils/isEmpty";
 import React from "react";
+import SquareWin from "./SquareWin";
 
 /**
  * @param {{ map: Field, pos: Position }} param0 
@@ -67,6 +68,9 @@ export default function Game({ map, pos: playerPos }) {
 
 					if (square === "x") 
 						return <SquareX {...props} key={props.key} />;
+
+					if (square === "win")
+						return <SquareWin {...props} key={props.key} />;
 
 					return <SquareEmpty key={props.key} />;
 				})}

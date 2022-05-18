@@ -35,6 +35,13 @@ export default class Player {
     lose;
 
     /**
+     * Check whether the player has reached the end
+     * @type {boolean}
+     * @private
+     */
+    win;
+
+    /**
      * Create a player
      * @param {Field} map 
      * @param {Position} startPos 
@@ -47,6 +54,7 @@ export default class Player {
         this.currentDirection = direction;
         this.moves = movesLeft;
         this.lose = false;
+        this.win = false;
     }
 
     /**
@@ -62,6 +70,7 @@ export default class Player {
      */
     restart() {
         this.lose = false;
+        this.win = false;
         this.setPosition(findStart(this.map));
         this.setMovesLeft(0);
     }
@@ -71,6 +80,13 @@ export default class Player {
      */
     hasLost() {
         return this.lose;
+    }
+
+    /**
+     * Check whether the player has reached the end
+     */
+    hasWin() {
+        return this.win;
     }
 
     /**
@@ -116,6 +132,10 @@ export default class Player {
         // If touch X, game over
         if (this.map[this.playerPos.row][this.playerPos.col] === "x" && this.moves === 0) 
             return (this.lose = true);
+
+        // If reach the end, game win
+        if (this.map[this.playerPos.row][this.playerPos.col] === "win")
+            return (this.win = true);
 
         // Successfully move
         return true;

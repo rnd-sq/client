@@ -29,13 +29,13 @@ export default function Home() {
 		if (e.key === "ArrowUp")
 			player.go("up");
 
-		if (e.key === "ArrowDown")
+		else if (e.key === "ArrowDown")
 			player.go("down");
 
-		if (e.key === "ArrowLeft")
+		else if (e.key === "ArrowLeft")
 			player.go("left");
 
-		if (e.key === "ArrowRight")
+		else if (e.key === "ArrowRight")
 			player.go("right");
 
 		// If the player lost, show a notification and restart the game
@@ -43,6 +43,10 @@ export default function Home() {
 			NotificationManager.error("You touched X. Now you need to go again from the beginning!");
 			player.restart();
 		}
+
+		// If the player won, show a notification and restart the game
+		else if (player.hasWin()) 
+			NotificationManager.success("You completed the map!");
 
 		// Update the UI
 		rerender();
@@ -56,7 +60,7 @@ export default function Home() {
 	// Render the game and the control bar
 	return <>
 		<Game map={player.field} pos={player.position} />
-		<Menu player={player} />
+		<Menu player={player} rerender={rerender} />
 		<NotificationContainer />
 	</>;
 }
