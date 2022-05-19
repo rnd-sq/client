@@ -1,9 +1,10 @@
+// @ts-check
 import { NotificationManager } from "react-notifications";
 
-import random from "../utils/random";
+import random from "../../utils/random";
 
 /**
- * @param {{ player: import("../utils/Player").default; rerender: () => void }} param0 
+ * @param {{ player: import("../../utils/Player").default; rerender: () => void }} param0 
  */
 export default function RollTheDice({ player, rerender }) {
     /**

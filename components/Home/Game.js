@@ -3,7 +3,7 @@ import SquareEmpty from "./SquareEmpty";
 import SquareRoad from "./SquareRoad";
 import SquareX from "./SquareX";
 import StartPos from "./StartPos";
-import isEmpty from "../utils/isEmpty";
+import isEmpty from "../../utils/isEmpty";
 import React from "react";
 import SquareWin from "./SquareWin";
 

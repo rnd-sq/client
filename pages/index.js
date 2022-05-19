@@ -3,9 +3,9 @@ import defaultMap from "../utils/map.json";
 import React from "react";
 
 // Components
-import Game from "../components/Game";
+import Game from "../components/Home/Game";
 import Player from "../utils/Player";
-import Menu from "../components/Menu";
+import Menu from "../components/Home/Menu";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 
 // Hooks

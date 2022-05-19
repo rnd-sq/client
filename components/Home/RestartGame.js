@@ -2,7 +2,7 @@
 import { NotificationManager } from "react-notifications";
 
 /**
- * @param {{ player: import("../utils/Player").default, rerender: () => void }} param0 
+ * @param {{ player: import("../../utils/Player").default, rerender: () => void }} param0 
  */
 export default function RestartGame({ player, rerender }) {
     const onClick = () => {
