@@ -1,5 +1,4 @@
-// @ts-check
-import defaultMap from "../utils/map";
+import defaultMap from "../utils/map.json";
 
 import React from "react";
 
@@ -16,7 +15,7 @@ import useForceUpdate from "../utils/useForceUpdate";
 import 'react-notifications/lib/notifications.css';
 
 export default function Home() {
-	const [map] = React.useState(defaultMap);
+	const [map, setMap] = React.useState(defaultMap);
 	// @ts-ignore
 	const player = React.useMemo(() => new Player(map), [map]);
 	const rerender = useForceUpdate();
@@ -60,7 +59,7 @@ export default function Home() {
 	// Render the game and the control bar
 	return <>
 		<Game map={player.field} pos={player.position} />
-		<Menu player={player} rerender={rerender} />
+		<Menu player={player} rerender={rerender} setMap={setMap} />
 		<NotificationContainer />
 	</>;
 }

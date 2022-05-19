@@ -67,7 +67,7 @@ body {
 			}
 
 			// Roll the dice button
-			button {
+			#restart-game, #roll-the-dice, #load-map {
 				&:hover {
 					background-color: white;
 				}
@@ -78,6 +78,18 @@ body {
 				font-family: "Montserrat";
 				padding: 10px;
 				cursor: pointer;
+			}
+
+			#load-map {
+				font-size: 13px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				// Hide file input
+				> input {
+					display: none;
+				}
 			}
 		}
 

@@ -1,16 +1,17 @@
 // @ts-check
 import React from "react";
-import useForceUpdate from "../utils/useForceUpdate";
+import LoadMap from "./LoadMap";
 import RestartGame from "./RestartGame";
 import RollTheDice from "./RollTheDice";
 /**
- * @param {{ player: import("../utils/Player").default, rerender: () => void }} param0
+ * @param {{ player: import("../utils/Player").default, rerender: () => void, setMap: React.Dispatch<React.SetStateAction<Field>> }} param0
  * @returns 
  */
-export default function Menu({ player, rerender }) {
+export default function Menu({ player, rerender, setMap }) {
     return <div id="menu">
         <RollTheDice player={player} rerender={rerender} />
         <RestartGame player={player} rerender={rerender} />
+        <LoadMap setMap={setMap} />
         <div id="player-data">{"Moves left: " + player.movesLeft}</div>
     </div>
 }
