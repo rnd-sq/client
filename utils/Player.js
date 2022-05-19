@@ -120,6 +120,22 @@ export default class Player {
     }
 
     /**
+     * @param {Direction} direction 
+     * @returns {Direction}
+     * @private
+     */
+    getOpposite(direction) {
+        if (direction === "down")
+            return "up";
+        if (direction === "up")
+            return "down";
+        if (direction === "right")
+            return "left";
+        if (direction === "left")
+            return "right";
+    }
+
+    /**
      * Go to the next position
      * @param {Direction} direction
      */
@@ -130,12 +146,15 @@ export default class Player {
         this.moves--;
 
         // If touch X, game over
-        if (this.map[this.playerPos.row][this.playerPos.col] === "x" && this.moves === 0) 
+        if (this.map[this.playerPos.row][this.playerPos.col] === "x" && this.moves === 0)
             return (this.lose = true);
 
         // If reach the end, game win
-        if (this.map[this.playerPos.row][this.playerPos.col] === "win")
-            return (this.win = true);
+        if (this.map[this.playerPos.row][this.playerPos.col] === "win") {
+            if (this.moves === 0)
+                return (this.win = true);
+            this.direction = this.getOpposite(this.direction);
+        }
 
         // Successfully move
         return true;
