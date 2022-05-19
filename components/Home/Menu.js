@@ -2,6 +2,7 @@
 import React from "react";
 import LoadMap from "./LoadMap";
 import MapEditor from "./MapEditor";
+import PlayerData from "./PlayerData";
 import RestartGame from "./RestartGame";
 import RollTheDice from "./RollTheDice";
 /**
@@ -10,10 +11,10 @@ import RollTheDice from "./RollTheDice";
  */
 export default function Menu({ player, rerender, setMap }) {
     return <div id="menu">
+        <PlayerData player={player} />
         <RollTheDice player={player} rerender={rerender} />
         <RestartGame player={player} rerender={rerender} />
         <LoadMap setMap={setMap} />
         <MapEditor />
-        <div id="player-data">{"Moves left: " + player.movesLeft}</div>
     </div>
 }

@@ -58,8 +58,8 @@ export default function Home() {
 
 	// Render the game and the control bar
 	return <>
-		<Game map={player.field} pos={player.position} />
 		<Menu player={player} rerender={rerender} setMap={setMap} />
+		<Game map={player.field} pos={player.position} />
 		<NotificationContainer />
 	</>;
 }

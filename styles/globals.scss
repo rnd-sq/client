@@ -18,7 +18,7 @@ body {
 		width: 100vw;
 		height: 100vh;
 		display: flex;
-		justify-content: right;
+		justify-content: center;
 		overflow: scroll;
 
 		// The map
@@ -30,7 +30,7 @@ body {
 				font-family: "Montserrat";
 				display: flex;
 
-				> * {
+				>* {
 					user-select: none;
 				}
 			}
@@ -49,14 +49,15 @@ body {
 
 		// The menu
 		#menu {
-			height: 100vh;
+			width: 100vw;
+			height: 60px;
 			position: fixed;
-			left: 0px;
 			background-color: #999;
 			display: flex;
-			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 
-			> * {
+			>* {
 				margin: 20px;
 			}
 
@@ -67,7 +68,10 @@ body {
 			}
 
 			// Roll the dice button
-			#restart-game, #roll-the-dice, #load-map, #go-to-map-editor {
+			#restart-game,
+			#roll-the-dice,
+			#load-map,
+			#go-to-map-editor {
 				&:hover {
 					background-color: white;
 				}
@@ -78,18 +82,17 @@ body {
 				font-family: "Montserrat";
 				padding: 10px;
 				cursor: pointer;
-			}
 
-			#load-map {
+				// Text alignment and style
 				font-size: 13px;
 				display: flex;
 				justify-content: center;
 				align-items: center;
+			}
 
-				// Hide file input
-				> input {
-					display: none;
-				}
+			// Hide file input
+			#load-map>input {
+				display: none;
 			}
 		}
 
