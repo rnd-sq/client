@@ -15,5 +15,10 @@ export default [
     ["empty", "empty", "empty", "empty", "road" , "empty", "empty", "empty", "empty", "empty", "empty"],
     ["empty", "empty", "empty", "empty", "x"    , "empty", "empty", "empty", "empty", "empty", "empty"],
     ["empty", "empty", "empty", "empty", "road" , "empty", "empty", "empty", "empty", "empty", "empty"],
-    ["empty", "empty", "empty", "empty", "win"  , "empty", "empty", "empty", "empty", "empty", "empty"],
+    ["empty", "empty", "empty", "empty", "road" , "x"    , "road" , "road" , "x"    , "road" , "x"    ],
+    ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "x"    ],
+    ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "road" ],
+    ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "x"    ],
+    ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "road" ],
+    ["empty", "empty", "empty", "empty", "win"  , "x"    , "x"    , "road" , "road" , "x"    , "road" ],
 ]

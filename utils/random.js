@@ -3,5 +3,5 @@
  * @param {number} to 
  */
 export default function random(from, to) {
-    return to + Math.floor(Math.random() * (from - to + 1));
+    return to + Math.round(Math.random() * (from - to));
 }
