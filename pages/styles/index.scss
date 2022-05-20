@@ -1,0 +1,17 @@
+@use "./home";
+@use "./editor";
+
+body {
+	padding: 0;
+	margin: 0;
+
+	// Hide scrollbar
+	::-webkit-scrollbar {
+		display: none;
+	}
+
+	// Notification font
+	.notification {
+		font-family: "Montserrat";
+	}
+}

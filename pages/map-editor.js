@@ -1,5 +1,6 @@
 // @ts-check
 export default function MapEditor() {
-    return <>
-    </>;
+    return <section id="editor-wrapper">
+        
+    </section>;
 }

@@ -57,11 +57,11 @@ export default function Home() {
 	});
 
 	// Render the game and the control bar
-	return <>
+	return <section id="home-wrapper">
 		<Menu player={player} rerender={rerender} setMap={setMap} />
 		<Game map={player.field} pos={player.position} />
 		<NotificationContainer />
-	</>;
+	</section>;
 }
 
 /**
