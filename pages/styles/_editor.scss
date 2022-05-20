@@ -1,7 +1,22 @@
+@use "./env";
+
 #editor-wrapper {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
     overflow: scroll;
+
+    #editor {
+        width: fit-content;
+    
+        .row {
+            font-family: "Montserrat";
+            display: flex;
+    
+            >* {
+                user-select: none;
+            }
+
+            .sq-empty {
+                @include env.absSize(52px);
+            }
+        }
+    }
 }

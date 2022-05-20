@@ -1,4 +1,4 @@
 // @ts-check
-export default function SquareEmpty() {
-    return <div className="sq-empty"></div>;
+export default function SquareEmpty({ onClick = () => {} }) {
+    return <div className="sq-empty" onClick={onClick}></div>;
 }

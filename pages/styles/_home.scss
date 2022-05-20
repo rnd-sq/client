@@ -27,10 +27,8 @@
             background-color: red;
         }
 
-        .sq {
-            &-empty {
-                @include env.absSize(52px);
-            }
+        .sq-empty {
+            @include env.absSize(52px);
         }
     }
 
