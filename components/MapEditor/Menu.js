@@ -25,7 +25,7 @@ export default function Menu({ map, setMap }) {
     React.useEffect(() => {
         const href = URL.createObjectURL(new Blob([JSON.stringify(map)]));
         setFileHref(href);
-    }, []);
+    }, [map]);
 
     /**
      * @type {React.MouseEventHandler<HTMLDivElement>}
