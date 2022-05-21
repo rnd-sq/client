@@ -1,10 +1,13 @@
 // @ts-check
+import React from "react";
 import { NotificationManager } from "react-notifications";
 
 /**
  * @param {{ map: Field, setMap: React.Dispatch<React.SetStateAction<Field>> }} param0
  */
 export default function Menu({ map, setMap }) {
+    const [fileHref, setFileHref] = React.useState("");
+
     /**
      * Load the map
      * @type {React.ChangeEventHandler<HTMLInputElement>}
@@ -19,6 +22,11 @@ export default function Menu({ map, setMap }) {
         }
     }
 
+    React.useEffect(() => {
+        const href = URL.createObjectURL(new Blob([JSON.stringify(map)]));
+        setFileHref(href);
+    });
+
     /**
      * @type {React.MouseEventHandler<HTMLDivElement>}
      */
@@ -31,7 +39,7 @@ export default function Menu({ map, setMap }) {
         </div>
         <a
             download="map.json"
-            href={URL.createObjectURL(new Blob([JSON.stringify(map)], { type: "application/json" }))}
+            href={fileHref}
         >Save as</a>
     </div>
 }
