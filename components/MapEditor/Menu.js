@@ -15,10 +15,6 @@ export default function Menu({ map, setMap }) {
         try {
             const fileContent = await e.target.files.item(0).text();
             const map = JSON.parse(fileContent);
-
-            if (fileContent.length !== 70) 
-                throw new Error("Map size is not correct");
-
             setMap(map);
         } catch (e) {
             NotificationManager.error("Error loading map! File format is not correct");
@@ -26,15 +22,15 @@ export default function Menu({ map, setMap }) {
     }
 
     /**
-     * @type {React.MouseEventHandler<HTMLButtonElement>}
+     * @type {React.MouseEventHandler<HTMLDivElement>}
      */
     const onButtonLoadMap = e => e.currentTarget.querySelector("input").click();
 
     return <div id="menu">
-        <button onClick={onButtonLoadMap}>
+        <div onClick={onButtonLoadMap}>
             Load an existing map
             <input type="file" onChange={onLoadMap} className="hidden" />
-        </button>
+        </div>
         <a
             download="map.json"
             href={URL.createObjectURL(blob)}

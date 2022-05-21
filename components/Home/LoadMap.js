@@ -15,7 +15,6 @@ export default function LoadMap({ setMap }) {
     /**
      * @type {React.ChangeEventHandler<HTMLInputElement>} 
      */
-    // TODO: The event doesn't get called when the file is loaded
     const onLoad = async e => {
         const fileContent = await e.target.files.item(0).text();
         try {
