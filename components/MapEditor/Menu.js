@@ -5,8 +5,6 @@ import { NotificationManager } from "react-notifications";
  * @param {{ map: Field, setMap: React.Dispatch<React.SetStateAction<Field>> }} param0
  */
 export default function Menu({ map, setMap }) {
-    const blob = new Blob([JSON.stringify(map)], { type: "application/json" });
-
     /**
      * Load the map
      * @type {React.ChangeEventHandler<HTMLInputElement>}
@@ -33,7 +31,7 @@ export default function Menu({ map, setMap }) {
         </div>
         <a
             download="map.json"
-            href={URL.createObjectURL(blob)}
+            href={URL.createObjectURL(new Blob([JSON.stringify(map)], { type: "application/json" }))}
         >Save as</a>
     </div>
 }
