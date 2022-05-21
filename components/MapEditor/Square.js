@@ -12,7 +12,7 @@ import StartPos from "../Home/StartPos";
  */
 export default function Square({ type, position, map, setMap }) {
     const onClick = () => {
-        if (type === "empty") 
+        if (type === "empty")
             type = "road";
 
         else if (type === "road")
@@ -22,11 +22,14 @@ export default function Square({ type, position, map, setMap }) {
             type = "win";
 
         else if (type === "win")
+            type = "start";
+
+        else if (type === "start")
             type = "empty";
 
         setMap(map => {
             map[position.row][position.col] = type;
-            return map;
+            return [...map];
         });
     }
 
@@ -67,7 +70,7 @@ export default function Square({ type, position, map, setMap }) {
             props.style.height -= 1;
             props.style.borderTop = "2px solid black";
         }
-        
+
         if (isEmpty(map, position.row + 1, position.col)) {
             props.style.height -= 1;
             props.style.borderBottom = "2px solid black";
@@ -78,10 +81,10 @@ export default function Square({ type, position, map, setMap }) {
     if (type === "start")
         return <StartPos {...props} key={props.key} />;
 
-    if (type === "road") 
+    if (type === "road")
         return <SquareRoad {...props} key={props.key} />;
 
-    if (type === "x") 
+    if (type === "x")
         return <SquareX {...props} key={props.key} />;
 
     if (type === "win")

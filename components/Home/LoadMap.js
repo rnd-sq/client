@@ -15,6 +15,7 @@ export default function LoadMap({ setMap }) {
     /**
      * @type {React.ChangeEventHandler<HTMLInputElement>} 
      */
+    // TODO: The event doesn't get called when the file is loaded
     const onLoad = async e => {
         const fileContent = await e.target.files.item(0).text();
         try {
@@ -26,6 +27,6 @@ export default function LoadMap({ setMap }) {
 
     return <div id="load-map" onClick={onClick}>
         Load map
-        <input type="file" onChange={onLoad} />
+        <input type="file" onChange={onLoad} className="hidden" />
     </div>
 }

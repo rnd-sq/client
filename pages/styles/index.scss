@@ -1,6 +1,10 @@
 @use "./home";
 @use "./editor";
 
+.hidden {
+	display: none;
+}
+
 body {
 	padding: 0;
 	margin: 0;

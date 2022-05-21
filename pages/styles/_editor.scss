@@ -3,6 +3,43 @@
 #editor-wrapper {
     overflow: scroll;
 
+    // The menu
+    #menu {
+        width: 100vw;
+        height: 60px;
+        background-color: #999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+
+        >* {
+            margin: 20px;
+        }
+
+        button, a {
+            &:hover {
+                background-color: white;
+            }
+
+            background-color: whitesmoke;
+            border: none;
+            outline: none;
+            font-family: "Montserrat";
+            padding: 10px;
+            cursor: pointer;
+            color: black;
+            text-decoration: none;
+
+            // Text alignment and style
+            font-size: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    // The editor
     #editor {
         width: fit-content;
     
