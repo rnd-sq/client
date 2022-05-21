@@ -9,6 +9,13 @@ Random square is a simple game made with Next.js.
 - If you react the `W` square with no moves left, you completed the map
 - If you react the `S` square with some moves left, you have to move backwards.
 
+## How to edit? 
+- Click on a random square to change the type of square
+- Clicking on the empty square will change it to be a normal square
+- Clicking on the normal square will change it to be an `X` square
+- Clicking on the `X` square will change it to be a `W` square
+- Clicking on the `W` square will change it to be an `S` square
+
 ## Functionalities
 
 ### Homepage
