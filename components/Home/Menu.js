@@ -1,5 +1,6 @@
 // @ts-check
 import React from "react";
+import Guide from "./Guide";
 import LoadMap from "./LoadMap";
 import MapEditor from "./MapEditor";
 import PlayerData from "./PlayerData";
@@ -16,5 +17,6 @@ export default function Menu({ player, rerender, setMap }) {
         <RestartGame player={player} rerender={rerender} />
         <LoadMap setMap={setMap} />
         <MapEditor />
+        <Guide href="https://github.com/aquapi/rnd-sq/blob/main/README.md" />
     </div>
 }
