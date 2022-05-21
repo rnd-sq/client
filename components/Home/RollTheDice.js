@@ -11,7 +11,7 @@ export default function RollTheDice({ player, rerender }) {
      * @type {React.MouseEventHandler<HTMLButtonElement>}
      */
     const onClick = () => {
-        if (player.movesLeft === 0) {
+        if (player.movesLeft === 0 && !player.hasWin()) {
             player.setMovesLeft(random(1, 6));
             NotificationManager.info("You rolled " + player.movesLeft);
             rerender();

@@ -1,6 +1,7 @@
+// @ts-check
+import findDirection from "./findDirection";
 import findStart from "./findStart";
 
-// @ts-check
 export default class Player {
     /**
      * @type {number}
@@ -44,14 +45,12 @@ export default class Player {
     /**
      * Create a player
      * @param {Field} map 
-     * @param {Position} startPos 
-     * @param {Direction} direction 
      * @param {number} movesLeft
      */
-    constructor(map, direction = "down", movesLeft = 0) {
+    constructor(map, movesLeft = 0) {
         this.map = map;
         this.playerPos = findStart(map);
-        this.currentDirection = direction;
+        this.currentDirection = findDirection(this.playerPos, map);
         this.moves = movesLeft;
         this.lose = false;
         this.win = false;
@@ -153,7 +152,7 @@ export default class Player {
         if (this.map[this.playerPos.row][this.playerPos.col] === "win") {
             if (this.moves === 0)
                 return (this.win = true);
-            this.direction = this.getOpposite(this.direction);
+            this.currentDirection = this.getOpposite(this.currentDirection);
         }
 
         // Successfully move
