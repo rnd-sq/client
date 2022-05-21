@@ -49,6 +49,9 @@
     
             >* {
                 user-select: none;
+                &:hover {
+                    box-shadow: 1px 1px;
+                }
             }
 
             .sq-empty {
