@@ -23,7 +23,8 @@ export default function Home() {
 	/**
 	 * @type {(this: Window, ev: KeyboardEvent) => any} 
 	 */
-	const move = e => {
+	// This will change when map changes => Trigger the useEffect
+	const move = React.useCallback(e => {
 		// Key events
 		if (e.key === "ArrowUp")
 			player.go("up");
@@ -49,12 +50,12 @@ export default function Home() {
 
 		// Update the UI
 		rerender();
-	}
+	}, [map]);
 
 	React.useEffect(() => {
 		window.addEventListener("keydown", move);
 		return () => window.removeEventListener("keydown", move);
-	}, [map]);
+	}, [move]);
 
 	// Render the game and the control bar
 	return <section id="home-wrapper">
