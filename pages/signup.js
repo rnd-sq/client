@@ -1,12 +1,11 @@
 import React from 'react';
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
-import axios from 'axios';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'semantic-ui-css/semantic.min.css';
 import 'react-notifications/lib/notifications.css';
+import axios from "axios";
 
-export default function Login() {
-    // Ref objects
+export default function Signup() {
     const email = React.useRef();
     const password = React.useRef();
 
@@ -16,19 +15,19 @@ export default function Login() {
     const getCb = refObject => e => refObject.current = e.currentTarget.value;
 
     const onSubmit = async () => {
-        const res = await axios.post("/api/login", {
+        const res = await axios.post("/api/signup", {
             email: email.current,
             password: password.current
         })
             .then(x => x.data)
             .catch(e => {
                 console.log(e);
-                NotificationManager.error("Email or password is incorrect");
+                NotificationManager.error("Your email is already registered");
             });
 
         // Save token to local storage
         if (res) {
-            NotificationManager.success("Login successful! Please wait while we redirect you back to home page...");
+            NotificationManager.success("Signup successful! Please wait while we redirect you back to home page...");
             localStorage.setItem("token", res.token);
             setTimeout(() => window.location.href = "/", 2000);
         }
@@ -38,8 +37,8 @@ export default function Login() {
     return <>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
-                <Header as='h2' color='teal' textAlign='center'>Welcome back!</Header>
-                <Form size="large" onSubmit={onSubmit}>
+                <Header as='h2' color='teal' textAlign='center'>Create an account</Header>
+                <Form size='large' onSubmit={onSubmit}>
                     <Segment stacked>
                         <Form.Input
                             fluid
@@ -48,7 +47,6 @@ export default function Login() {
                             placeholder='E-mail address'
                             onChange={getCb(email)}
                         />
-
                         <Form.Input
                             fluid
                             icon='lock'
@@ -57,11 +55,12 @@ export default function Login() {
                             type='password'
                             onChange={getCb(password)}
                         />
-
-                        <Button color='teal' fluid size='large' type='submit'>Login</Button>
+                        <Button color='teal' fluid size='large' type="submit">Sign up</Button>
                     </Segment>
                 </Form>
-                <Message>New to us? <a href='/signup'>Sign Up</a></Message>
+                <Message>
+                    Already have an account? <a href='/login'>Log in</a>
+                </Message>
             </Grid.Column>
         </Grid>
         <NotificationContainer />

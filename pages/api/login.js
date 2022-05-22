@@ -3,7 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 /**
- * @type {import("express").RequestHandler}
+ * @param {import("next").NextApiRequest} req
+ * @param {import("next").NextApiResponse} res
  */
 export default async function handler(req, res) {
     const { email, password } = req.body;
