@@ -20,10 +20,7 @@ export default function Signup() {
             password: password.current
         })
             .then(x => x.data)
-            .catch(e => {
-                console.log(e);
-                NotificationManager.error("Your email is already registered");
-            });
+            .catch(e => NotificationManager.error(e.response.data.message));
 
         // Save token to local storage
         if (res) {
@@ -32,6 +29,11 @@ export default function Signup() {
             setTimeout(() => window.location.href = "/", 2000);
         }
     };
+
+    React.useEffect(() => {
+        if (localStorage.getItem("token")) 
+            window.location.href = "/";
+    });
 
     // Render
     return <>

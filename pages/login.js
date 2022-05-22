@@ -21,10 +21,7 @@ export default function Login() {
             password: password.current
         })
             .then(x => x.data)
-            .catch(e => {
-                console.log(e);
-                NotificationManager.error("Email or password is incorrect");
-            });
+            .catch(e => NotificationManager.error(e.response.data.message));
 
         // Save token to local storage
         if (res) {
@@ -33,6 +30,11 @@ export default function Login() {
             setTimeout(() => window.location.href = "/", 2000);
         }
     };
+
+    React.useEffect(() => {
+        if (localStorage.getItem("token")) 
+            window.location.href = "/";
+    });
 
     // Render
     return <>

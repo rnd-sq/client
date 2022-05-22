@@ -18,14 +18,22 @@ export default async function handler(req, res) {
     // Find the user and check if the password is correct
     const user = await User.findOne({ email });
 
-    if (!user || !await bcrypt.compare(password, user.password)) 
+    if (user) 
         return res.status(400).send({
-            message: "Invalid email or password"
+            message: "Email already registered"
         });
+
+    // Create user
+    const newUser = new User({
+        email,
+        password: await bcrypt.hash(password, 10),
+    });
+
+    await newUser.save();
 
     // Set the session
     res.send({
         message: "OK",
-        token: jwt.sign({ email: user.email }, process.env.JWT_SECRET),
+        token: jwt.sign({ email }, process.env.JWT_SECRET),
     });
 }
