@@ -54,7 +54,7 @@ export default function Home() {
 	React.useEffect(() => {
 		window.addEventListener("keydown", move);
 		return () => window.removeEventListener("keydown", move);
-	}, [map]);
+	}, [map, move]);
 
 	// Render the game and the control bar
 	return <section id="home-wrapper">
