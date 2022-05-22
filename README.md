@@ -1,4 +1,4 @@
-# Intro
+# Random square
 Random square is a simple game made with Next.js.
 
 ## How to play?
@@ -30,3 +30,8 @@ Random square is a simple game made with Next.js.
 
 ## Compability
 This project editor does not work on Edge
+
+## Future changes
+After June, this reposity will be private.
+
+The `JWT_SECRET` variable will be changed too.
