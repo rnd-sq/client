@@ -70,7 +70,8 @@ export default class Player {
     restart() {
         this.lose = false;
         this.win = false;
-        this.setPosition(findStart(this.map));
+        this.playerPos = findStart(this.map);
+        this.currentDirection = findDirection(this.playerPos, this.map);
         this.setMovesLeft(0);
     }
 
