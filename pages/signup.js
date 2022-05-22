@@ -61,7 +61,7 @@ export default function Signup() {
                     </Segment>
                 </Form>
                 <Message>
-                    Already have an account? <a href='/login'>Log in</a>
+                    Already have an account? <Link href='/login'>Log in</Link>
                 </Message>
             </Grid.Column>
         </Grid>

@@ -4,6 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 import axios from 'axios';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
+import Link from "next/link";
 
 export default function Login() {
     // Ref objects
@@ -63,7 +64,7 @@ export default function Login() {
                         <Button color='teal' fluid size='large' type='submit'>Login</Button>
                     </Segment>
                 </Form>
-                <Message>New to us? <a href='/signup'>Sign Up</a></Message>
+                <Message>New to us? <Link href='/signup'>Sign Up</Link></Message>
             </Grid.Column>
         </Grid>
         <NotificationContainer />
