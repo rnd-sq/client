@@ -8,11 +8,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "newer.js": "^0.2.6",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-notifications": "^1.7.3",
-    "sass": "^1.51.0"
+    "sass": "^1.51.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.33",
