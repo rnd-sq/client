@@ -3,6 +3,7 @@ import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'semantic-ui-css/semantic.min.css';
 import 'react-notifications/lib/notifications.css';
+import Link from "next/link";
 import axios from "axios";
 
 export default function Signup() {
