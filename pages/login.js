@@ -5,6 +5,7 @@ import axios from 'axios';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Login() {
     // Ref objects
@@ -39,6 +40,9 @@ export default function Login() {
 
     // Render
     return <>
+        <Head>
+            <title>Welcome back!</title>
+        </Head>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='teal' textAlign='center'>Welcome back!</Header>

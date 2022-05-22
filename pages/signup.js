@@ -4,6 +4,7 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 import 'semantic-ui-css/semantic.min.css';
 import 'react-notifications/lib/notifications.css';
 import Link from "next/link";
+import Head from "next/head";
 import axios from "axios";
 
 export default function Signup() {
@@ -32,12 +33,15 @@ export default function Signup() {
     };
 
     React.useEffect(() => {
-        if (localStorage.getItem("token")) 
+        if (localStorage.getItem("token"))
             window.location.href = "/";
     });
 
     // Render
     return <>
+        <Head>
+            <title>Create an account</title>
+        </Head>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='teal' textAlign='center'>Create an account</Header>

@@ -7,6 +7,7 @@ import Game from "../components/Home/Game";
 import Player from "../utils/Player";
 import Menu from "../components/Home/Menu";
 import { NotificationContainer, NotificationManager } from "react-notifications";
+import Head from "next/head";
 
 // Hooks
 import useForceUpdate from "../utils/useForceUpdate";
@@ -45,7 +46,7 @@ export default function Home() {
 		}
 
 		// If the player won, show a notification and restart the game
-		else if (player.hasWin()) 
+		else if (player.hasWin())
 			NotificationManager.success("You completed the map!");
 
 		// Update the UI
@@ -58,11 +59,16 @@ export default function Home() {
 	}, [move]);
 
 	// Render the game and the control bar
-	return <section id="home-wrapper">
-		<Menu player={player} rerender={rerender} setMap={setMap} />
-		<Game map={player.field} pos={player.position} />
-		<NotificationContainer />
-	</section>;
+	return <>
+		<Head>
+			<title>Game</title>
+		</Head>
+		<section id="home-wrapper">
+			<Menu player={player} rerender={rerender} setMap={setMap} />
+			<Game map={player.field} pos={player.position} />
+			<NotificationContainer />
+		</section>
+	</>;
 }
 
 /**
