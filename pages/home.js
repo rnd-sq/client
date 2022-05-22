@@ -23,7 +23,7 @@ export default function Home() {
 	/**
 	 * @type {(this: Window, ev: KeyboardEvent) => any} 
 	 */
-	// This will change when map changes => Trigger the useEffect
+	// This will change when player changes => map changes => Trigger the useEffect
 	const move = React.useCallback(e => {
 		// Key events
 		if (e.key === "ArrowUp")
@@ -50,7 +50,7 @@ export default function Home() {
 
 		// Update the UI
 		rerender();
-	}, [map]);
+	}, [player, rerender]);
 
 	React.useEffect(() => {
 		window.addEventListener("keydown", move);
