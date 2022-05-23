@@ -7,11 +7,11 @@ module.exports = {
         return [
             {
                 source: "/api/login",
-                destination: "https://rnd-sq-dev.herokuapp.com/login"
+                destination: "https://rnd-sq-dev.herokuapp.com/api/login"
             },
             {
                 source: "/api/signup",
-                destination: "https://rnd-sq-dev.herokuapp.com/signup"
+                destination: "https://rnd-sq-dev.herokuapp.com/api/signup"
             }
         ];
     }
