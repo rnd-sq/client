@@ -6,12 +6,12 @@ module.exports = {
     async rewrites() {
         return [
             {
-                source: "/login",
-                destination: "rnd-sq-dev.herokuapp.com/login"
+                source: "/api/login",
+                destination: "https://rnd-sq-dev.herokuapp.com/login"
             },
             {
-                source: "/signup",
-                destination: "rnd-sq-dev.herokuapp.com/signup"
+                source: "/api/signup",
+                destination: "https://rnd-sq-dev.herokuapp.com/signup"
             }
         ];
     }
