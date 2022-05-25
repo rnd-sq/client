@@ -14,5 +14,8 @@ module.exports = {
                 destination: "https://rnd-sq-dev.herokuapp.com/api/signup"
             }
         ];
-    }
+    },
+    httpAgentOptions: {
+        keepAlive: false,
+    },
 }

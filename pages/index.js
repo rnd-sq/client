@@ -40,7 +40,7 @@ export default function IndexPage() {
     React.useEffect(() => {
         if (localStorage.getItem("token"))
             setIsLoggedIn(true);
-    });
+    }, []);
 
     const goToPlay = () => location.href = "/game";
     const goToLogin = () => location.href = isLoggedIn ? "/logout" : "/login";

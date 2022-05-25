@@ -1,3 +1,14 @@
 {
-  "extends": "next/core-web-vitals"
+	"extends": "next/core-web-vitals",
+	"rules": {
+		"no-sparse-arrays": "error",
+		"no-this-before-super": "error",
+		"no-unreachable": "error",
+		"no-unreachable-loop": "error",
+		"no-unused-vars": "error",
+		"no-duplicate-imports": "error",
+		"block-scoped-var": "error",
+		"no-var": "error",
+		"prefer-const": "warn"
+	}
 }
