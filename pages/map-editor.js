@@ -18,7 +18,7 @@ export default function MapEditor() {
         <section id="editor-wrapper">
             <Menu map={map} setMap={setMap} />
             <Editor size={size} map={map} setMap={setMap} />
-            <NotificationContainer />
         </section>
+        <NotificationContainer />
     </>;
 }
