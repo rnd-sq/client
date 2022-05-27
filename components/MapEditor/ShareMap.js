@@ -2,6 +2,7 @@
 import React from "react";
 import { Button, Input, Modal } from "semantic-ui-react";
 import axios from "axios";
+import { NotificationManager } from "react-notifications";
 import "semantic-ui-css/semantic.min.css";
 
 /**
@@ -12,20 +13,28 @@ export default function ShareMap({ map }) {
     const inputValue = React.useRef("");
 
     const onSubmit = async () => {
+        setIsOpen(false);
         const res = await axios.post("/api/maps/publish", {
             map,
             name: inputValue.current
-        }).then(req => req.data).catch(e => e.response.data);
-        console.log(res);
+        })
+            .then(req => req.data.message)
+            .catch(e => NotificationManager.error(e.response.data.message));
+
+        if (res)
+            NotificationManager.success(res);
     }
 
     return <Modal
         open={isOpen}
         onClose={() => setIsOpen(false)}
         onOpen={() => setIsOpen(true)}
-        trigger={<div>Share map</div>}
+        trigger={<div id="share-map">Share map</div>}
+        closeIcon
+        size="mini"
+        style={{ textAlign: "center" }}
     >
-        <Modal.Header>Enter the map name</Modal.Header>
+        <Modal.Header>Share the map</Modal.Header>
         <Modal.Content>
             <Input
                 focus

@@ -35,7 +35,7 @@ export default function Menu({ map, setMap }) {
     const onButtonLoadMap = e => e.currentTarget.querySelector("input").click();
 
     return <div id="menu">
-        <div onClick={onButtonLoadMap}>
+        <div onClick={onButtonLoadMap} id="load-an-existing-map">
             Load an existing map
             <input type="file" onChange={onLoadMap} className="hidden" />
         </div>
@@ -43,6 +43,7 @@ export default function Menu({ map, setMap }) {
         <a
             download="map.json"
             href={fileHref}
+            id="download-map"
         >Save as</a>
     </div>
 }

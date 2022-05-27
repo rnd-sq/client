@@ -17,9 +17,7 @@
             margin: 20px;
         }
 
-        >div,
-        >a,
-        >button {
+        #share-map, #download-map, #load-an-existing-map {
             &:hover {
                 background-color: white;
             }
