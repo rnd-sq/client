@@ -7,73 +7,73 @@
     display: flex;
     justify-content: center;
     overflow: scroll;
+}
 
-    // The map
-    #game-wrapper {
-        width: fit-content;
-        padding: 180px;
+// The map
+#game-wrapper {
+    width: fit-content;
+    padding: 180px;
 
-        .row {
-            font-family: "Montserrat";
-            display: flex;
+    .row {
+        font-family: "Montserrat";
+        display: flex;
 
-            >* {
-                user-select: none;
-            }
-        }
-
-        #player {
-            @include env.absSize(30px);
-            background-color: red;
-        }
-
-        .sq-empty {
-            @include env.absSize(52px);
+        >* {
+            user-select: none;
         }
     }
 
-    // The menu
-    #menu {
-        width: 100vw;
-        height: 60px;
-        position: fixed;
-        background-color: #999;
+    #player {
+        @include env.absSize(30px);
+        background-color: red;
+    }
+
+    .sq-empty {
+        @include env.absSize(52px);
+    }
+}
+
+// The menu
+#menu {
+    width: 100vw;
+    height: 60px;
+    position: fixed;
+    background-color: #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >* {
+        margin: 20px;
+    }
+
+    // Some player data
+    #player-data {
+        color: whitesmoke;
+        font-family: "Montserrat";
+    }
+
+    // Roll the dice button
+    #restart-game,
+    #roll-the-dice,
+    #load-map,
+    #go-to-map-editor,
+    #go-to-guide {
+        &:hover {
+            background-color: white;
+        }
+
+        background-color: whitesmoke;
+        border: none;
+        outline: none;
+        font-family: "Montserrat";
+        padding: 10px;
+        cursor: pointer;
+
+        // Text alignment and style
+        font-size: 13px;
         display: flex;
         justify-content: center;
         align-items: center;
-
-        >* {
-            margin: 20px;
-        }
-
-        // Some player data
-        #player-data {
-            color: whitesmoke;
-            font-family: "Montserrat";
-        }
-
-        // Roll the dice button
-        #restart-game,
-        #roll-the-dice,
-        #load-map,
-        #go-to-map-editor,
-        #go-to-guide {
-            &:hover {
-                background-color: white;
-            }
-
-            background-color: whitesmoke;
-            border: none;
-            outline: none;
-            font-family: "Montserrat";
-            padding: 10px;
-            cursor: pointer;
-
-            // Text alignment and style
-            font-size: 13px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
     }
 }

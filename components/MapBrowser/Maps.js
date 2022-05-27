@@ -12,6 +12,8 @@ export default function Maps({ map }) {
         meta: `By ${m.creator.substring(0, m.creator.indexOf("@"))}`,
         description: `Difficulty: ${getDifficulty(m.difficulty)}`,
         fluid: true,
+        className: "map-card",
+        onClick: () => location.href =  "/map/" + encodeURIComponent(m.name)
     }));
 
     return <Card.Group items={items} id="maps" />;
