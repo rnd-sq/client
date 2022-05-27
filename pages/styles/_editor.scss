@@ -17,7 +17,9 @@
             margin: 20px;
         }
 
-        > div, > a {
+        >div,
+        >a,
+        >button {
             &:hover {
                 background-color: white;
             }
@@ -42,15 +44,16 @@
     // The editor
     #editor {
         width: fit-content;
-    
+
         .row {
             font-family: "Montserrat";
             display: flex;
-    
+
             >* {
                 user-select: none;
+
                 &:hover {
-                    box-shadow: 1px 1px;
+                    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 }
             }
 

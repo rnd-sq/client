@@ -1,6 +1,7 @@
 // @ts-check
 import React from "react";
 import { NotificationManager } from "react-notifications";
+import ShareMap from "./ShareMap";
 
 /**
  * @param {{ map: Field, setMap: React.Dispatch<React.SetStateAction<Field>> }} param0
@@ -22,6 +23,7 @@ export default function Menu({ map, setMap }) {
         }
     }
 
+    // Load blob href
     React.useEffect(() => {
         const href = URL.createObjectURL(new Blob([JSON.stringify(map)]));
         setFileHref(href);
@@ -37,6 +39,7 @@ export default function Menu({ map, setMap }) {
             Load an existing map
             <input type="file" onChange={onLoadMap} className="hidden" />
         </div>
+        <ShareMap map={map} />
         <a
             download="map.json"
             href={fileHref}
