@@ -1,4 +1,4 @@
-const apis = ["/api/login", "/api/signup", "/api/maps/publish"];
+const apis = ["/api/login", "/api/signup", "/api/maps/publish", "/api/maps/getAll"];
 
 /**
  * @type {import("next").NextConfig}
