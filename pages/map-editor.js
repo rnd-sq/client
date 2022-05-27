@@ -4,6 +4,7 @@ import { NotificationContainer } from "react-notifications";
 import Editor from "../components/MapEditor/Editor";
 import Menu from "../components/MapEditor/Menu";
 import getDefaultMap from "../utils/getDefaultMap";
+import "react-notifications/lib/notifications.css";
 import Head from "next/head";
 
 export default function MapEditor() {
