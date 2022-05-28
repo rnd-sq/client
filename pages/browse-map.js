@@ -4,7 +4,11 @@ import React from "react";
 import "semantic-ui-css/semantic.min.css";
 import { Input } from "semantic-ui-react";
 import Maps from "../components/MapBrowser/Maps";
+import axios from "axios";
 
+/**
+ * @returns {[any[], React.Dispatch<React.SetStateAction<any[]>>]}
+ */
 function useMaps() {
     const [maps, setMaps] = React.useState([]);
     React.useEffect(() => {
@@ -12,11 +16,21 @@ function useMaps() {
             .then(res => res.json())
             .then(json => setMaps(json));
     }, []);
-    return maps;
+    return [maps, setMaps];
 }
 
 export default function BrowseMap() {
-    const maps = useMaps();
+    const [maps, setMaps] = useMaps();
+
+    /**
+     * @param {React.ChangeEvent<HTMLInputElement>} e 
+     */
+    const onChange = e => 
+        axios.post(`/api/maps/getAll`, {
+            query: e.currentTarget.value
+        })
+            .then(res => res.data)
+            .then(json => setMaps(json));
 
     return <>
     <Head>
@@ -24,7 +38,7 @@ export default function BrowseMap() {
     </Head>
     <section id="map-browser">
         <div id="search-bar">
-            <Input placeholder="Search..." icon="search" fluid size="large" />
+            <Input placeholder="Search..." icon="search" fluid size="large" onChange={onChange} />
         </div>
         <Maps map={maps} />
     </section>
