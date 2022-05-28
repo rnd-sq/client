@@ -6,6 +6,8 @@ import MapEditor from "./MapEditor";
 import PlayerData from "./PlayerData";
 import RestartGame from "./RestartGame";
 import RollTheDice from "./RollTheDice";
+import MapBrowser from "./MapBrowser";
+
 /**
  * @param {{ player: import("../../utils/Player").default, rerender: () => void, setMap?: React.Dispatch<React.SetStateAction<Field>>, isDefaultGameplay?: boolean }} param0
  * @returns 
@@ -18,6 +20,7 @@ export default function Menu({ player, rerender, setMap = () => {}, isDefaultGam
         {isDefaultGameplay && <>
             <LoadMap setMap={setMap} />
             <MapEditor />
+            <MapBrowser />
             <Guide href="https://github.com/aquapi/rnd-sq/blob/main/README.md" />
         </>}
     </div>
