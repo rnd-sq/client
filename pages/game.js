@@ -26,6 +26,9 @@ export default function Home() {
 	 */
 	// This will change when player changes => map changes => Trigger the useEffect
 	const move = React.useCallback(e => {
+		if (player.hasWin()) 
+			return;
+
 		// Key events
 		if (e.key === "ArrowUp")
 			player.go("up");

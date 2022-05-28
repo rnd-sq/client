@@ -43,6 +43,8 @@ export default function Gameplay() {
          */
         e => {
             e.preventDefault();
+            if (player.hasWin())
+                return;
 
             if (e.key === "ArrowUp")
                 player.go("up");
