@@ -70,7 +70,9 @@ export default function Gameplay() {
                 axios.put("/api/users/completedMap", {
                     mapName,
                     token: localStorage.getItem("token")
-                });
+                })
+                    .then(req => NotificationManager.success(req.data.message))
+                    .catch(e => NotificationManager.warning(e.response.data.message));
             }
 
             // Update the UI
