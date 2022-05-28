@@ -120,6 +120,13 @@ export default class Player {
     }
 
     /**
+     * @readonly
+     */
+    get direction() {
+        return this.currentDirection;
+    }
+
+    /**
      * @param {Direction} direction 
      * @returns {Direction}
      * @private

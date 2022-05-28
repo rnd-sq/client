@@ -2,6 +2,12 @@ import React from "react";
 import { useRouter } from "next/router";
 import Game from "../../components/Home/Game";
 import Player from "../../utils/Player";
+import useForceUpdate from "../../utils/useForceUpdate";
+import axios from "axios";
+import { NotificationContainer, NotificationManager } from "react-notifications";
+import Menu from "../../components/Home/Menu";
+import 'react-notifications/lib/notifications.css';
+import Head from "next/head";
 
 /**
  * @param {string} mapName 
@@ -20,13 +26,73 @@ function useMap(mapName) {
 }
 
 // @ts-check
-// TODO: The game does render but cannot move the player for now
 export default function Gameplay() {
+    const rerender = useForceUpdate();
+
+    // Map
     const mapName = useRouter().query.name;
     const mapData = useMap(mapName);
-    const map = mapData && JSON.parse(mapData.data);
+    const map = React.useMemo(() => (mapData && JSON.parse(mapData.data)) ?? [], [mapData]);
 
-    const player = React.useMemo(() => Array.isArray(map) && new Player(map), [map]);
+    // Player
+    const player = React.useMemo(() => map.length > 0 && new Player(map), [map]);
 
-    return player && <Game map={map} pos={player.position} />;
+    const move = React.useCallback(
+        /**
+         * @param {KeyboardEvent} e
+         */
+        e => {
+            e.preventDefault();
+
+            if (e.key === "ArrowUp")
+                player.go("up");
+
+            if (e.key === "ArrowDown")
+                player.go("down");
+
+            if (e.key === "ArrowLeft")
+                player.go("left");
+
+            if (e.key === "ArrowRight")
+                player.go("right");
+
+            // If the player lost, show a notification and restart the game
+            if (player.hasLost()) {
+                NotificationManager.error("You touched X. Now you need to go again from the beginning!");
+                player.restart();
+            }
+
+            // If the player won, show a notification and restart the game
+            else if (player.hasWin()) {
+                NotificationManager.success("You completed the map!");
+
+                // Add to completed maps
+                axios.put("/api/users/completedMap", {
+                    mapName,
+                    token: localStorage.getItem("token")
+                });
+            }
+
+            // Update the UI
+            rerender();
+        },
+        [player, rerender, mapName]
+    );
+
+    // Add event listener
+    React.useEffect(() => {
+        document.addEventListener("keydown", move);
+        return () => document.removeEventListener("keydown", move);
+    }, [move]);
+
+    return <>
+        <Head>
+            <title>{mapName}</title>
+        </Head>
+        {player && <>
+            <Menu player={player} rerender={rerender} isDefaultGameplay={false} />
+            <Game map={map} pos={player.position} />
+            <NotificationContainer />
+        </>}
+    </>;
 }
