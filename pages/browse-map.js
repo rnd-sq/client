@@ -12,8 +12,8 @@ import axios from "axios";
 function useMaps() {
     const [maps, setMaps] = React.useState([]);
     React.useEffect(() => {
-        axios.get("/api/maps/getAll")
-            .then(res => res.data)
+        fetch("/api/maps/getAll")
+            .then(res => res.json())
             .then(json => setMaps(json));
     }, []);
     return [maps, setMaps];
