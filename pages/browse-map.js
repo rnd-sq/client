@@ -12,8 +12,8 @@ import axios from "axios";
 function useMaps() {
     const [maps, setMaps] = React.useState([]);
     React.useEffect(() => {
-        fetch("/api/maps/getAll")
-            .then(res => res.json())
+        axios.get("/api/maps/getAll")
+            .then(res => res.data)
             .then(json => setMaps(json));
     }, []);
     return [maps, setMaps];
@@ -25,7 +25,7 @@ export default function BrowseMap() {
     /**
      * @param {React.ChangeEvent<HTMLInputElement>} e 
      */
-    const onChange = e => 
+    const onChange = e =>
         axios.post(`/api/maps/getAll`, {
             query: e.currentTarget.value
         })
@@ -33,14 +33,14 @@ export default function BrowseMap() {
             .then(json => setMaps(json));
 
     return <>
-    <Head>
-        <title>Browse Map</title>
-    </Head>
-    <section id="map-browser">
-        <div id="search-bar">
-            <Input placeholder="Search..." icon="search" fluid size="large" onChange={onChange} />
-        </div>
-        <Maps map={maps} />
-    </section>
+        <Head>
+            <title>Browse Map</title>
+        </Head>
+        <section id="map-browser">
+            <div id="search-bar">
+                <Input placeholder="Search..." icon="search" fluid size="large" onChange={onChange} />
+            </div>
+            <Maps map={maps} />
+        </section>
     </>;
 }
