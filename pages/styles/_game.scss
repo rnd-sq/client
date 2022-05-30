@@ -69,6 +69,8 @@
         outline: none;
         font-family: "Montserrat";
         padding: 10px;
+        color: black;
+        text-decoration: none;
         cursor: pointer;
 
         // Text alignment and style
@@ -76,10 +78,5 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
-        a {
-            text-decoration: none;
-            color: "black";
-        }
     }
 }
