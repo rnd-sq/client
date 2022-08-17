@@ -1,4 +1,4 @@
-const apis = ["/api/login", "/api/signup", "/api/maps/publish", "/api/maps/getAll", "/api/users/completedMap"];
+const apis = ["/api/users/login", "/api/users/signup", "/api/maps/publish", "/api/maps/all", "/api/users/completedMap"];
 
 /**
  * @type {import("next").NextConfig}
@@ -8,7 +8,7 @@ module.exports = {
     async rewrites() {
         return apis.map(des => ({
             source: des,
-            destination: "https://rnd-sq-dev.herokuapp.com" + des
+            destination: (process.env.NODE_ENV === "production" ? "https://rnd-sq-dev.herokuapp.com" : "http://localhost:5000") + des
         }));
     },
     httpAgentOptions: {

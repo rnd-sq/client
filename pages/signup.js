@@ -17,7 +17,7 @@ export default function Signup() {
     const getCb = refObject => e => refObject.current = e.currentTarget.value;
 
     const onSubmit = async () => {
-        const res = await axios.post("/api/signup", {
+        const res = await axios.post("/api/users/signup", {
             email: email.current,
             password: password.current
         })
@@ -27,7 +27,7 @@ export default function Signup() {
         // Save token to local storage
         if (res) {
             NotificationManager.success("Signup successful! Please wait while we redirect you back to home page...");
-            localStorage.setItem("token", res.token);
+            localStorage.setItem("token", res.data);
             setTimeout(() => window.location.href = "/", 2000);
         }
     };

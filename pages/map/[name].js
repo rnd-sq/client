@@ -15,10 +15,15 @@ import Head from "next/head";
 function useMap(mapName) {
     const [map, setMap] = React.useState(null);
     React.useEffect(() => {
-        fetch(`/api/maps/getAll`)
+        fetch(`/api/maps/all`, {
+            method: "POST",
+            body: JSON.stringify({
+                query: mapName
+            }),
+        })
             .then(res => res.json())
             .then(json => {
-                const map = json.find(m => m.name === mapName);
+                const map = json.data.find(m => m.name === mapName);
                 setMap(map);
             });
     }, [mapName]);
@@ -32,7 +37,7 @@ export default function Gameplay() {
     // Map
     const mapName = useRouter().query.name;
     const mapData = useMap(mapName);
-    const map = React.useMemo(() => (mapData && JSON.parse(mapData.data)) ?? [], [mapData]);
+    const map = React.useMemo(() => (mapData && mapData.data) ?? [], [mapData]);
 
     // Player
     const player = React.useMemo(() => map.length > 0 && new Player(map), [map]);

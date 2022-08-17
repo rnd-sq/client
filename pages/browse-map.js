@@ -12,10 +12,14 @@ import axios from "axios";
 function useMaps() {
     const [maps, setMaps] = React.useState([]);
     React.useEffect(() => {
-        fetch("/api/maps/getAll")
+        fetch("/api/maps/all", {
+            method: "POST",
+            body: "{}"
+        })
             .then(res => res.json())
-            .then(json => setMaps(json));
+            .then(json => setMaps(json.data));
     }, []);
+    // @ts-ignore
     return [maps, setMaps];
 }
 
@@ -30,7 +34,7 @@ export default function BrowseMap() {
             query: e.currentTarget.value
         })
             .then(res => res.data)
-            .then(json => setMaps(json));
+            .then(json => setMaps(json?.data || {}));
 
     return <>
         <Head>

@@ -15,7 +15,7 @@ export default function Menu({ map, setMap }) {
      */
     const onLoadMap = async e => {
         try {
-            const fileContent = await e.target.files.item(0).text();
+            const fileContent = await e.target.files?.item(0)?.text() || "";
             const map = JSON.parse(fileContent);
             setMap(map);
         } catch (e) {
@@ -32,7 +32,7 @@ export default function Menu({ map, setMap }) {
     /**
      * @type {React.MouseEventHandler<HTMLDivElement>}
      */
-    const onButtonLoadMap = e => e.currentTarget.querySelector("input").click();
+    const onButtonLoadMap = e => e.currentTarget.querySelector("input")?.click();
 
     return <div id="menu">
         <div onClick={onButtonLoadMap} id="load-an-existing-map">

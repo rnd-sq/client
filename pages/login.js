@@ -18,7 +18,7 @@ export default function Login() {
     const getCb = refObject => e => refObject.current = e.currentTarget.value;
 
     const onSubmit = async () => {
-        const res = await axios.post("/api/login", {
+        const res = await axios.post("/api/users/login", {
             email: email.current,
             password: password.current
         })
@@ -28,7 +28,7 @@ export default function Login() {
         // Save token to local storage
         if (res) {
             NotificationManager.success("Login successful! Please wait while we redirect you back to home page...");
-            localStorage.setItem("token", res.token);
+            localStorage.setItem("token", res.data);
             setTimeout(() => window.location.href = "/", 2000);
         }
     };
