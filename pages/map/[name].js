@@ -70,17 +70,14 @@ export default function Gameplay() {
             }
 
             // If the player won, show a notification and restart the game
-            else if (player.hasWin()) {
-                NotificationManager.success("You completed the map!");
-
+            else if (player.hasWin()) 
                 // Add to completed maps
-                axios.put("/api/users/completedMap", {
+                axios.put("/api/users/completedMaps", {
                     mapName,
                     token: localStorage.getItem("token")
                 })
                     .then(req => NotificationManager.success(req.data.message))
                     .catch(e => NotificationManager.warning(e.response.data.message));
-            }
 
             // Update the UI
             rerender();

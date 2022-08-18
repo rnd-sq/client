@@ -30,7 +30,7 @@ export default function BrowseMap() {
      * @param {React.ChangeEvent<HTMLInputElement>} e 
      */
     const onChange = e =>
-        axios.post(`/api/maps/getAll`, {
+        axios.post(`/api/maps/all`, {
             query: e.currentTarget.value
         })
             .then(res => res.data)
