@@ -28,16 +28,19 @@ export default function ShareMap({ map }) {
         }
 
         // Send request
-        const res = await axios.post("/api/maps/publish", {
+        return axios.post("/api/maps/publish", {
             map,
             name: inputValue.current,
             creator: localStorage.getItem("token")
         })
-            .then(req => req.data.message)
+            .then(req => {
+                NotificationManager.success(req.data.message);
+                setTimeout(() => 
+                    window.location.href = 
+                        "/map/" 
+                        + encodeURIComponent(inputValue.current), 2000)
+            })
             .catch(e => NotificationManager.error(e.response.data.message));
-
-        if (res)
-            NotificationManager.success(res);
     }
 
     return <Modal

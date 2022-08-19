@@ -3,7 +3,7 @@ import Head from "next/head";
 import React from "react";
 import "semantic-ui-css/semantic.min.css";
 import { Input } from "semantic-ui-react";
-import Maps from "../components/MapBrowser/Maps";
+import Maps from "../../components/MapBrowser/Maps";
 import axios from "axios";
 
 /**

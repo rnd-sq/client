@@ -32,7 +32,10 @@ export default function Rate() {
             },
             token: localStorage.getItem("token")
         })
-            .then(x => NotificationManager.success(x.data.message))
+            .then(x => {
+                NotificationManager.success(x.data.message);
+                setTimeout(() => window.location.href = "/map/" + encodeURIComponent(mapName), 2000);
+            })
             .catch(e =>
                 NotificationManager.error(e.response.data.message)
             );
