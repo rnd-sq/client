@@ -48,6 +48,15 @@ export default function Gameplay() {
          */
         e => {
             e.preventDefault();
+
+            // Shortcuts
+            if (e.ctrlKey && e.key === "r")
+                return document.getElementById("roll-the-dice").click();
+
+            if (e.altKey && e.key === "r")
+                return document.getElementById("restart-game").click();
+
+            // Player move keys
             if (player.hasWin())
                 return;
 
