@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Dropdown, Form, Grid, Header, Segment } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import axios from 'axios';
@@ -8,11 +8,9 @@ import Head from "next/head";
 
 export default function Rate() {
     // Ref objects
-    const mapName = React.useRef();
+    const [mapName, setMapName] = React.useState();
     const difficulty = React.useRef();
     const rateType = React.useRef();
-
-    const getCb = refObject => e => refObject.current = e.currentTarget.value;
 
     const dropdownCb = (event, refObject) =>
         refObject.current = event
@@ -27,7 +25,7 @@ export default function Rate() {
 
     const onSubmit = async () =>
         axios.put("/api/maps/rate", {
-            name: mapName.current,
+            name: mapName,
             rate: {
                 type: rateType.current,
                 difficulty: difficulty.current
@@ -38,6 +36,21 @@ export default function Rate() {
             .catch(e =>
                 NotificationManager.error(e.response.data.message)
             );
+
+    const getNameQueryValue = () => {
+        const rawQuery = window.location.search;
+
+        if (!rawQuery)
+            return;
+        
+        const parsedQuery = new URLSearchParams(rawQuery);
+        
+        return parsedQuery.get("name");
+    } 
+
+    useEffect(() => {
+        setMapName(getNameQueryValue());
+    }, []);
 
     // Render
     return <>
@@ -52,7 +65,8 @@ export default function Rate() {
                         <Form.Input
                             fluid
                             placeholder='Enter the map name'
-                            onChange={getCb(mapName)}
+                            onChange={e => setMapName(e.currentTarget.value)}
+                            value={mapName}
                         />
 
                         <div className='field'>
