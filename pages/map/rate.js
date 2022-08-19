@@ -48,7 +48,7 @@ export default function Rate() {
         
         const parsedQuery = new URLSearchParams(rawQuery);
         
-        return parsedQuery.get("name");
+        return decodeURIComponent(parsedQuery.get("name"));
     } 
 
     useEffect(() => {

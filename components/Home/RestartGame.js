@@ -6,7 +6,7 @@ import { NotificationManager } from "react-notifications";
  */
 export default function RestartGame({ player, rerender }) {
     const onClick = () => {
-        NotificationManager.info("Game restarted!");
+        NotificationManager.info("Game restarted!", null, 1000);
         player.restart();
         rerender();
     };

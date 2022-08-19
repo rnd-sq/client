@@ -16,7 +16,7 @@ export default function RollTheDice({ player, rerender }) {
 
         if (player.movesLeft === 0) {
             player.setMovesLeft(random(1, 6));
-            NotificationManager.info("You rolled " + player.movesLeft);
+            NotificationManager.info("You rolled " + player.movesLeft, null, 1000);
             rerender();
             return;
         }

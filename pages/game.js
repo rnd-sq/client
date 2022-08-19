@@ -30,21 +30,21 @@ export default function Home() {
 			return;
 
 		// Key events
-		if (e.key === "ArrowUp")
+		if (e.key === "ArrowUp" || e.key === "w")
 			player.go("up");
 
-		else if (e.key === "ArrowDown")
+		else if (e.key === "ArrowDown" || e.key === "s")
 			player.go("down");
 
-		else if (e.key === "ArrowLeft")
+		else if (e.key === "ArrowLeft" || e.key === "a")
 			player.go("left");
 
-		else if (e.key === "ArrowRight")
+		else if (e.key === "ArrowRight" || e.key === "d")
 			player.go("right");
 
 		// If the player lost, show a notification and restart the game
 		if (player.hasLost()) {
-			NotificationManager.error("You touched X. Now you need to go again from the beginning!");
+			NotificationManager.error("You touched X. Now you need to go again from the beginning!", null, 1000);
 			player.restart();
 		}
 
