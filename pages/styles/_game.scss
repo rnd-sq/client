@@ -9,10 +9,20 @@
     overflow: scroll;
 }
 
+$whs: rgb(213, 212, 212);
+
 // The map
 #game-wrapper {
-    width: fit-content;
+    width: 100vw;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     padding: 180px;
+
+    background-color: $whs;
 
     .row {
         font-family: "Montserrat";
@@ -30,6 +40,11 @@
 
     .sq-empty {
         @include env.absSize(52px);
+        background-color: $whs;
+    }
+
+    .sq-x, .sq-road, .sq-start, .sq-win {
+        background-color: white;
     }
 }
 

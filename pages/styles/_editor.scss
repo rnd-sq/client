@@ -1,13 +1,16 @@
 @use "./env";
 
+$whs: rgb(213, 212, 212);
+
 #editor-wrapper {
     overflow: scroll;
+    background-color: $whs;
 
     // The menu
     #menu {
         max-width: 100vw;
         height: 60px;
-        background-color: #999;
+        background-color: #888; 
         display: flex;
         justify-content: center;
         align-items: center;
@@ -22,7 +25,6 @@
             &:hover {
                 background-color: white;
             }
-
             background-color: whitesmoke;
             border: none;
             outline: none;
@@ -58,6 +60,10 @@
 
             .sq-empty {
                 @include env.absSize(52px);
+            }
+
+            .sq-x, .sq-road, .sq-start, .sq-win {
+                background-color: white;
             }
         }
     }
