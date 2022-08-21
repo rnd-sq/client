@@ -6,8 +6,6 @@ import { Card } from "semantic-ui-react";
  * @param {{ map: { name: string, rate: { difficulty: string, type: string }, creator: string, data: string, verifier: string, dateCreated: Date }[] }} param0
  */
 export default function Maps({ map }) {
-    console.log(map[0])
-
     const items = map.map(m => ({
         header: m.name,
         meta: `By: ${m.creator.substring(0, m.creator.indexOf("@"))}` + (

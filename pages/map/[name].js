@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import Game from "../../components/Home/Game";
 import Player from "../../utils/Player";
 import useForceUpdate from "../../utils/useForceUpdate";
-import axios from "axios";
 import { NotificationContainer, NotificationManager } from "react-notifications";
 import Menu from "../../components/Home/Menu";
 import 'react-notifications/lib/notifications.css';
 import Head from "next/head";
+import { connect } from "socket.io-client";
 
 /**
  * @param {string} mapName 
@@ -29,6 +29,11 @@ function useMap(mapName) {
     }, [mapName]);
     return map;
 }
+
+const socket = connect(process.env.NODE_ENV === "production" 
+    ? "https://rnd-sq-dev.herokuapp.com" 
+    : "http://localhost:5000"
+);
 
 // @ts-check
 export default function Gameplay() {
@@ -81,12 +86,7 @@ export default function Gameplay() {
             // If the player won, show a notification and restart the game
             else if (player.hasWin()) 
                 // Add to completed maps
-                axios.put("/api/users/completedMaps", {
-                    mapName,
-                    token: localStorage.getItem("token")
-                })
-                    .then(req => NotificationManager.success(req.data.message))
-                    .catch(e => NotificationManager.warning(e.response.data.message));
+                socket.emit("complete map", mapName, localStorage.getItem("token"))
 
             // Update the UI
             rerender();
@@ -97,7 +97,13 @@ export default function Gameplay() {
     // Add event listener
     React.useEffect(() => {
         document.addEventListener("keydown", move);
-        return () => document.removeEventListener("keydown", move);
+        socket.on("notification", (type, message) =>
+            NotificationManager[type](message)
+        );
+        return () => {
+            socket.off("notification");
+            document.removeEventListener("keydown", move); 
+        };
     }, [move]);
 
     return <>

@@ -15,7 +15,8 @@
     "react-notifications": "^1.7.3",
     "sass": "^1.51.0",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.1.2"
+    "semantic-ui-react": "^2.1.2",
+    "socket.io-client": "^4.5.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.33",

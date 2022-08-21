@@ -35,5 +35,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-# database
-main.json
+# config
+jsconfig.json
