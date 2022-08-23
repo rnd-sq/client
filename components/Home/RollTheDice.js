@@ -1,8 +1,6 @@
 // @ts-check
 import { NotificationManager } from "react-notifications";
 
-import random from "../../utils/random";
-
 /**
  * @param {{ player: import("../../utils/Player").default; rerender: () => void }} param0 
  */
@@ -15,7 +13,7 @@ export default function RollTheDice({ player, rerender }) {
             return;
 
         if (player.movesLeft === 0) {
-            player.setMovesLeft(random(1, 6));
+            player.setMovesLeft(Date.now() % 6 + 1);
             NotificationManager.info("You rolled " + player.movesLeft, null, 1000);
             rerender();
             return;
