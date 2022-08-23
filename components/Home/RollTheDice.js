@@ -13,7 +13,7 @@ export default function RollTheDice({ player, rerender }) {
             return;
 
         if (player.movesLeft === 0) {
-            player.setMovesLeft((Date.now() + Math.random() * 10000) % 6 + 1);
+            player.setMovesLeft((Date.now() + Math.round(Math.random() * 10000)) % 6 + 1);
             NotificationManager.info("You rolled " + player.movesLeft, null, 1000);
             rerender();
             return;
