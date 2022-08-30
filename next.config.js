@@ -8,7 +8,7 @@ module.exports = {
     async rewrites() {
         return apis.map(des => ({
             source: des,
-            destination: (process.env.NODE_ENV === "production" ? "https://rnd-sq-dev.herokuapp.com" : "http://localhost:5000") + des
+            destination: (process.env.NODE_ENV === "production" ? "https://rnd-sq.loca.lt" : "http://localhost:5000") + des
         }));
     },
     httpAgentOptions: {
