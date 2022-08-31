@@ -4,11 +4,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node bin/start.mjs",
     "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "concurrently": "^7.3.0",
+    "localtunnel": "^2.0.2",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
