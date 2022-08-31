@@ -2,7 +2,7 @@
 
 const { exec } = require("child_process");
 
-function execute(command, name, cb = (() => { })) {
+function npx(command, name, cb = (() => { })) {
     const proc = exec("npx " + command, cb);
 
     proc.stderr.on('data', d => console.error(`[${name}]`, d));
@@ -11,8 +11,8 @@ function execute(command, name, cb = (() => { })) {
     return proc;
 }
 
-execute("next build", "Build",
+npx("next build", "Build",
     () =>
-        execute("next start", "Start")
+        npx("next start", "Start")
 );
-execute("lt --port 3000 --subdomain rnd-sq", "Share");
+npx("lt --port 3000 --subdomain rnd-sq", "Share");
