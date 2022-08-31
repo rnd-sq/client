@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+const { exec } = require("child_process");
+
+function execute(command, name, cb = (() => { })) {
+    const proc = exec("npx " + command, cb);
+
+    proc.stderr.on('data', d => console.error(`[${name}]`, d));
+    proc.stdout.on('data', d => console.log(`[${name}]`, d));
+
+    return proc;
+}
+
+execute("next build", "Build",
+    () =>
+        execute("next start", "Start")
+);
+execute("lt --port 3000 --subdomain rnd-sq", "Share");
