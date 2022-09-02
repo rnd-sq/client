@@ -5,12 +5,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "share": "lt --port 3000 --subdomain rnd-sq"
+    "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "localtunnel": "^2.0.2",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",

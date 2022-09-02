@@ -8,7 +8,7 @@ module.exports = {
     async rewrites() {
         return apis.map(des => ({
             source: des,
-            destination: "http://localhost:5000" + des
+            destination: (process.env.NODE_ENV === "production" ? "" : "http://localhost:5000") + des
         }));
     },
     httpAgentOptions: {
