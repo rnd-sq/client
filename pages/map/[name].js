@@ -31,7 +31,7 @@ function useMap(mapName) {
 }
 
 const socket = connect(process.env.NODE_ENV === "production" 
-    ? "https://rnd-sq-dev.herokuapp.com" 
+    ? "https://rnd-server.up.railway.app" 
     : "http://localhost:5000"
 );
 
